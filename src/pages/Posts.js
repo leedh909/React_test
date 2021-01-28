@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
-import Post from './pages';
+import Post from './Post';
 
 const Posts = ({ match }) => {
   return (

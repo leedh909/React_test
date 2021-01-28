@@ -8,7 +8,6 @@ import Menu from './Components/Menu';
 
 class App extends Component {
   render() {
-    console.log('test')
     return (
       <div>
         <Menu></Menu>
