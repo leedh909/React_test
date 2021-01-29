@@ -35,6 +35,11 @@ const MessionMenu = () => {
             4.Test_Api
           </NavLink>
         </li>
+        <li>
+          <NavLink exact to="/Test_find" activeStyle={activeStyle}>
+            5.Test_find
+          </NavLink>
+        </li>
       </ul>
       <hr />
     </div>
