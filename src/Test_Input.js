@@ -1,8 +1,7 @@
 import './App.css';
-import styled from 'styled-components';
 import { Component } from 'react';
 
-class App extends Component {
+class Test_Input extends Component {
   state = { text1: '', text2: '' };
 
   handleChange = (e) => {
@@ -33,4 +32,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Test_Input;

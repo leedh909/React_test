@@ -6,7 +6,7 @@ import { Home, About } from './pages';
 import Posts from './pages/Posts';
 import Menu from './Components/Menu';
 
-class App extends Component {
+class Test_Navigation extends Component {
   render() {
     return (
       <div>
@@ -21,4 +21,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default Test_Navigation;
