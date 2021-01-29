@@ -12,28 +12,24 @@ class App extends React.Component {
   componentWillMount() {
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then((res) => res.json())
-      .then((result) => {
+      .then((data) =>
         this.setState({
-          items: result,
-        });
-        // console.log(this.state.items, 'this.state.items');
-      });
+          items: data,
+        })
+      );
   }
 
   render() {
     const { items } = this.state;
+    const itemsList = items.map((item) => (
+      <li key={item.id} id={item.id}>
+        ID:{item.id}
+        <br></br>
+        title:{item.title}
+      </li>
+    ));
 
-    return (
-      <ul>
-        {items.map((item) => (
-          <li key={item.id}>
-            ID:{item.id}
-            <br />
-            Title:{item.title}
-          </li>
-        ))}
-      </ul>
-    );
+    return <ul>{itemsList}</ul>;
   }
 }
 export default App;
