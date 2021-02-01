@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class Test_find extends React.Component {
   constructor(props) {
@@ -14,13 +15,21 @@ class Test_find extends React.Component {
 
   componentWillMount() {
     console.log('componentWillMount');
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then((res) => res.json())
-      .then((data) =>
-        this.setState({
-          items: data,
-        })
-      );
+    // fetch('https://jsonplaceholder.typicode.com/posts')
+    //   .then((res) => res.json())
+    //   .then((data) =>
+    //     this.setState({
+    //       items: data,
+    //     })
+    //   );
+
+    axios({
+      url: 'https://jsonplaceholder.typicode.com/posts',
+      method: 'get',
+    }).then((response) => {
+      // console.log(response);
+      this.setState({ items: response.data });
+    });
   }
 
   //검색 목록 값 변경
@@ -54,6 +63,7 @@ class Test_find extends React.Component {
         if (
           this.state.items[i].id.toString() === this.state.input_v.toString()
         ) {
+          console.log('aaaA');
           setTimeout(() => {
             console.log('setTimeout');
             this.setState({
@@ -62,9 +72,16 @@ class Test_find extends React.Component {
             });
             console.log('2번 ' + this.state.result);
           }, 0);
+          break;
+        } else {
+          this.setState({
+            result: '검색하신 값이 없습니다.',
+          });
         }
         // console.log(this.state.result);
       }
+
+      console.log('bbbbB ', this.state.result);
       if (this.state.result === '') {
         console.log('검색값 없을때');
         this.setState({
@@ -74,8 +91,16 @@ class Test_find extends React.Component {
     } else {
       for (let i = 0; i < this.state.items.length; i++) {
         if (this.state.items[i].title === this.state.input_v) {
+          setTimeout(() => {
+            this.setState({
+              result:
+                this.state.items[i].id + ' / ' + this.state.items[i].title,
+            });
+          }, 0);
+          break;
+        } else {
           this.setState({
-            result: this.state.items[i].id + ' / ' + this.state.items[i].title,
+            result: '검색하신 값이 없습니다.',
           });
         }
       }
