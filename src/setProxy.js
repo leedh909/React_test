@@ -1,13 +1,8 @@
 const proxy = require('http-proxy-middleware');
-
-function setProxy(app) {
+module.exports = function (app) {
   app.use(
     proxy('/server', {
       target: 'http://localhost:9999',
     })
   );
-}
-
-module.exports = {
-  setProxy,
 };
